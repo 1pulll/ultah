@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Denaya 💖</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial;
+  background: radial-gradient(circle, #ff4da6, #000);
+  color: white;
+  text-align: center;
+}
+
+/* OPENING */
+#opening {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  font-size: 24px;
+  animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+/* STARS */
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #ff4da6, #000);
+}
+
+/* SHOOTING STAR */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: white;
+  transform: rotate(45deg);
+  animation: shoot 5s infinite;
+}
+
+@keyframes shoot {
+  0% {top:-100px; left:10%; opacity:0;}
+  10% {opacity:1;}
+  100% {top:100%; left:90%; opacity:0;}
+}
+
+/* PLANET */
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #ff99cc, #b30059);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 40px #ff66cc;
+}
+
+/* RING */
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 90px;
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(20deg);
+}
+
+/* ORBIT */
+.orbit {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 25s linear infinite;
+}
+
+@keyframes rotate {
+  from {transform: translate(-50%, -50%) rotate(0deg);}
+  to {transform: translate(-50%, -50%) rotate(360deg);}
+}
+
+/* FOTO */
+.orbit img {
+  position: absolute;
+  width: 85px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+/* POSISI FOTO */
+.orbit img:nth-child(1) {
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.orbit img:nth-child(2) {
+  top: 20%;
+  right: 0%;
+}
+
+.orbit img:nth-child(3) {
+  bottom: 20%;
+  right: 0%;
+}
+
+.orbit img:nth-child(4) {
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.orbit img:nth-child(5) {
+  bottom: 20%;
+  left: 0%;
+}
+
+.orbit img:nth-child(6) {
+  top: 20%;
+  left: 0%;
+}
+
+/* POSISI 6 FOTO MELINGKAR */
+.orbit img:nth-child(1) { top: 0; left: 50%; animation-delay:2s;}
+.orbit img:nth-child(2) { top: 25%; left: 85%; animation-delay:3s;}
+.orbit img:nth-child(3) { top: 75%; left: 85%; animation-delay:4s;}
+.orbit img:nth-child(4) { bottom: 0; left: 50%; animation-delay:5s;}
+.orbit img:nth-child(5) { top: 75%; left: 0; animation-delay:6s;}
+.orbit img:nth-child(6) { top: 25%; left: 0; animation-delay:7s;}
+
+@keyframes fadeIn {
+  to {opacity:1;}
+}
+
+/* CARD */
+.card {
+  position: absolute;
+  bottom: 8%;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  white-space: pre-line;
+}
+
+/* LOVE */
+.love {
+  position: absolute;
+  color: pink;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from {transform: translateY(0);}
+  to {transform: translateY(-200px); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="shooting-star"></div>
+
+<div id="opening">
+🎂 Selamat Ulang Tahun ke-18, Denaya Amnata 💖
+</div>
+
+<!-- PLANET -->
+<div class="planet"></div>
+<div class="ring"></div>
+
+<!-- FOTO -->
+<div class="orbit">
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+  <img src="foto4.jpg">
+  <img src="foto5.jpg">
+  <img src="foto6.jpg">
+</div>
+
+<!-- MUSIK -->
+<audio id="bgm" controls autoplay loop>
+  <source src="beautiful.mp3" type="audio/mpeg">
+</audio>
+
+<!-- UCAPAN -->
+<div class="card">
+  <h3 id="text"></h3>
+</div>
+
+<script>
+// MUSIC FADE
+setTimeout(() => {
+  let audio = document.getElementById("bgm");
+  audio.volume = 0;
+  audio.play().catch(err => {
+  console.log("Autoplay diblokir");
+});
+  let v = 0;
+  let fade = setInterval(()=>{
+    if(v<1){ v+=0.05; audio.volume=v;}
+    else clearInterval(fade);
+  },200);
+},3000);
+
+// TYPE TEXT
+const message = `Selamat ulang tahun ke-18 ya, Princess nayaa
+ 
+Nggak kerasa sekarang kamu udah sampai di umur yang jadi awal banyak hal baru.
+Aku harap di umur kamu yang sekarang, kamu bisa jadi pribadi yang lebih kuat, lebih dewasa,
+dan semua hal yang kamu inginkan bisa perlahan tercapai.
+
+Kadang aku masih keinget beberapa momen kita dulu—hal-hal sederhana yang ternyata cukup berarti.
+Dari semua itu, aku banyak belajar, dan kamu juga jadi salah satu bagian yang pernah penting dalam hidup aku.
+
+Walaupun sekarang kita udah jalan masing-masing, aku tetap bersyukur pernah kenal kamu sejauh itu.
+
+Semoga kamu selalu bahagia, dikelilingi orang-orang baik, dan bisa nemuin apa yang benar-benar kamu cari.
+
+Jaga diri baik-baik ya.
+
+Happy 18th birthday, frist experience 
+
+— salam hangat Ipull 💖`;
+
+let i=0;
+function type(){
+  if(i<message.length){
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(type,40);
+  }
+}
+setTimeout(type,4000);
+
+// LOVE
+setInterval(()=>{
+  let love=document.createElement("div");
+  love.className="love";
+  love.innerHTML="❤";
+  love.style.left=Math.random()*100+"vw";
+  love.style.top="100%";
+  document.body.appendChild(love);
+  setTimeout(()=>love.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
